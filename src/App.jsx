@@ -3,10 +3,27 @@ import './App.css';
 import { Test } from './Test';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+import CountLabel from './CounLabel';
 
 export const App = () => {
+  const [num, setNum] = useState(0);
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    setNum(num + 1);
+  };
+
   return (
     <div className="App">
+      <button onClick={handleClick}>{num}</button>
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+      <button onClick={() => setCount(count - 1)}>
+        Decrement
+      </button>
+      <CountLabel count={count} />
       <Test name = "Test"/>
       <Test/>
       <Codelab name="Otter"> baby otter </Codelab>
